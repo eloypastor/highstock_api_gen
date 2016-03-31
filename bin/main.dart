@@ -19,7 +19,7 @@ main(List<String> args) async {
 
   StringBuffer api = new StringBuffer();
 
-  api.writeln("library highstock.options;");
+  api.writeln("library highstock;");
   api.writeln("");
   api.writeln("import 'package:uuid/uuid.dart';");
   api.writeln("import 'dart:js';");
@@ -33,9 +33,16 @@ external DateTime dateUTC (year, month, day);
   api.writeln("@JS('Date.UTC')");
   api.writeln("external DateTime dateUTC (year, month, day);");
   api.writeln("");
-  api.writeln("@JS('Highcharts.Chart')");
-  api.writeln("class HighchartsChart extends Chart {");
-  api.writeln("  external HighchartsChart (ChartOptions options);");
+  api.writeln("@JS('Highcharts.StockChart')");
+  api.writeln("class HighstockChart {");
+  api.writeln("  external HighstockChart (StockChartOptions options);");
+  api.writeln('''
+
+    /****************************************/
+    /* COPY HERE THE CONTENT OF Chart CLASS */
+    /*****************************************/
+
+  ''');
   api.writeln("  external List<Series> get series;");
   api.writeln("  external List<Axis> get axes;");
   api.writeln("}");
@@ -54,8 +61,8 @@ external DateTime dateUTC (year, month, day);
   api.writeln("");
   api.writeln("@JS()");
   api.writeln("@anonymous");
-  api.writeln("class ChartOptions extends OptionsObject {");
-  api.writeln("  external factory ChartOptions ();");
+  api.writeln("class StockChartOptions extends OptionsObject {");
+  api.writeln("  external factory StockChartOptions ();");
   api.writeln("  ");
   api.writeln("  external Chart get chart;");
   api.writeln("  external void set chart (Chart a_chart);");
